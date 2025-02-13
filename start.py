@@ -1,0 +1,3 @@
+def myFunc():
+    print("Test")
+    
