@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Kalkulaatorid</title>
+  <link rel="stylesheet" href="kalkStyle.css">
+</head>
+<body onload="juhuslikPilt()">
+
+<div id="kalk1">
+  <h2>Saia kalkulaator</h2>
+  <label for="saiatyyp">Vali saia:</label>
+  <select name="saiatyyp" id="saiatyyp">
+    <option value="vali">vali</option>
+    <option value="juustu">juustu</option>
+    <option value="kaneeli">kaneeli</option>
+    <option value="mooni">mooni</option>
+    <option value="pontsik">pontsik</option>
+  </select>
+  <label for="kogus">Kogus:</label>
+  <input type="number" id="kogus" min="1" max="10" step="1">
+  <div id="vastus"></div>
+  <button onclick="saiaKalk()">Arvuta</button>
+</div>
+
+<div id="kalk2">
+  <h2>Juhuslik pildi vastavus radionupule</h2>
+  <img src="" alt="juhuslik pilt" id="random-pilt">
+  <br>
+  <strong>Vali pilt:</strong>
+  <br>
+  <input type="radio" name="valik" id="pilt1" value="pildid/pilt1.png" onclick="radioKontroll()">
+  <label for="pilt1">Forest</label>
+  <br>
+  <input type="radio" name="valik" id="pilt2" value="pildid/pilt2.png" onclick="radioKontroll()">
+  <label for="pilt2">Mountains</label>
+  <br>
+  <input type="radio" name="valik" id="pilt3" value="pildid/pilt3.png" onclick="radioKontroll()">
+  <label for="pilt3">Beach</label>
+  <br>
+  <div id="vastus2"></div>
+</div>
+
+<div id="kalk3">
+  <h2>Temperatuuri kalkulaator</h2>
+  <input type="number" id="temperature" placeholder="Sisestage temperatuur">
+  <select id="susteem">
+    <option value="C">(°C)</option>
+    <option value="F">(°F)</option>
+  </select>
+  <button onclick="Temperature()">Teisenda</button>
+  <div id="result"></div>
+</div>
+
+<div id="kalk4">
+  <h2>BMI kalkulaator</h2>
+  <label for="height">Kasv (cm):</label>
+  <input type="number" id="height" min="1">
+  <br>
+  <label for="weight">Kaal (kg):</label>
+  <input type="number" id="weight" min="1">
+  <br>
+  <button onclick="calculateBMI()">BMI</button>
+  <div id="bmiResult"></div>
+</div>
+
+<script src="kalkScript.js"></script>
+</body>
+</html>
