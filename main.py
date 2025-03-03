@@ -1,24 +1,14 @@
-"""
-User managment System
-Id: 1, Name: Thomas, 44
-Id: 2, Name: Thomas, 44
-Id: 3, Name: Thomas, 44
-"""
-import bookGreator as bookGreator
-import vasia as vasia
+#file = open("test.txt", "r/w/a",)
+#file.read()
+#file.write()
+#file.close()
+import log_parser as logs
+import repor_generator as generateRepor
 
-def main():
-    print("1 - külalisteraamat")
-    print("2 - ")
-    userInput = input("Sinu valik:")
-    if userInput == "1":
-        bookGreator.guestBook()
-    elif userInput == "2":
-        vasia.vasia()
-    elif userInput == "3":
-    userFile = input("Milline file sa tahad lugeda?")
-    reader.readFile(userFile)
-    else:
-        print("vale valik")
-        
-main()
+log_file = "logs.txt"
+
+result = logs.analyze_log(log_file)
+generateRepor.generator_repor(result)
+#generate_report()
+
+#with open("file.txt","r",encoding="utf-8") as file:
