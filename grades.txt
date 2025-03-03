@@ -1,0 +1,9 @@
+Nimi: Anna
+Hinded: 5, 4, 3
+---
+Nimi: Dmitri
+Hinded: 4, 5, 5
+---
+Nimi: Anna
+Hinded: 1
+---
