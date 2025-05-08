@@ -26,3 +26,30 @@ with open("output.txt", "w") as file:
         file.write(f"{character}: {status}\n")
         print("файл output.txt создан.")
          
+
+with open("output.txt", "r") as file:
+    lines = file.readlines()
+
+alive = []
+dead = []
+
+
+for line in lines:
+    name, status = line.strip().split(": ")
+    if status == "Alive":
+        alive.append(name)
+    elif status == "Dead":
+        dead.append(name)
+
+
+with open("alive.txt", "w") as file_alive:
+    for person in alive:
+        file_alive.write(person + "\n")
+
+
+with open("dead.txt", "w") as file_dead:
+    for person in dead:
+        file_dead.write(person + "\n")
+
+print("Файлы 'alive.txt' и 'dead.txt' созданы.")
+   
