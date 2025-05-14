@@ -1,0 +1,14 @@
+today = datetime.now()
+file_name = 'zipper_' + today.strftime('%Y.%m.%dh%H%M') + '.zip'
+dir_name = 'tmp/'
+
+def add_folder_to_zip(folderPath,zipFile):
+    for root, dirs, files in os.walk(folderPath):
+        for file in files:
+            print(file)
+            print(root)
+            full_path = os.path.join(root, file)
+            zipFile.write(full_path)
+            
+with ZipFile("test_zip.zip", "w") as my_zip:
+    print(my_zip)
