@@ -1,14 +1,58 @@
-today = datetime.now()
-file_name = 'zipper_' + today.strftime('%Y.%m.%dh%H%M') + '.zip'
-dir_name = 'tmp/'
+# import json, csv
+# 
+# def getData():
+#     with open("33_country.json", "r") as file:
+#         data = json.load(file)
+#         print(data)
+#         
+# getData()
+# 
+# def saveCSV():
+#     
+    
+# import json, csv
+# 
+# def getData():
+#     with open("33_country_codes.json", "r") as file:
+#         data = json.load(file)
+#         print(data)
+#         
+# getData()
+# 
+# def saveCSV():
+#     pass
 
-def add_folder_to_zip(folderPath,zipFile):
-    for root, dirs, files in os.walk(folderPath):
-        for file in files:
-            print(file)
-            print(root)
-            full_path = os.path.join(root, file)
-            zipFile.write(full_path)
-            
-with ZipFile("test_zip.zip", "w") as my_zip:
-    print(my_zip)
+
+codes = {"country": [
+          {
+              "countryCode": "AD",
+              "countryName": "Andorra",
+              "continentName": "Europe"
+          },
+          {
+              "countryCode": "AE",
+              "countryName": "United Arab Emirates",
+              "continentName": "Asia"
+          },
+          {
+              "countryCode": "AF",
+              "countryName": "Afghanistan",
+              "continentName": "Asia"
+          }
+          ]
+         }
+
+codes_list = []
+countries = []
+continents = []
+
+print(codes["country"][0]["countryName"])
+
+for country in codes["country"]:
+    codes_list.append(country["countryCode"])
+    countries.append(country["countryName"])
+    continents.append(country["continentName"])
+
+print("Country Codes:", codes_list)
+print("Countries:", countries)
+print("Continents:", continents)
