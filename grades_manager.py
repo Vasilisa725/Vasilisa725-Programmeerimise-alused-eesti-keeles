@@ -1,34 +1,38 @@
-from file_handler import read_grades, write_grade
-def add_grade():
-    """Kogub õpilase nime ja hinded ning salvestab need faili."""
-    name = input("Sisesta õpilase nimi: ")
-    grades = list(map(int, input("Sisesta hinded (eralda komaga): ").split(", ")))
-    write_grade(name, grades)
-    print(f"Õpilase {name} hinded on lisatud.")
+class MurderStatsManager:
+    def __init__(self):
+        self.data = {}
 
-def view_grades():
-    """Kuvab kõik õpilased ja nende hinded."""
-    students = read_grades()
-    if not students:
-        print("Ei leitud ühtegi õpilast.")
-        return
-    for student in students:
-        print(f"Nimi: {student['name']}\nHinded: {', '.join(map(str, student['grades']))}\n---")
+    def add_data(self, continent, country, city, count):
+        if continent not in self.data:
+            self.data[continent] = {}
+        if country not in self.data[continent]:
+            self.data[continent][country] = {}
+        self.data[continent][country][city] = count
 
-def calculate_average(name):
-    """Arvutab õpilase keskmise hinde."""
-    students = read_grades()
-    for student in students:
-        if student["name"].lower() == name.lower():
-            avg = sum(student["grades"]) / len(student["grades"])
-            return avg
-    return None
+    def get_stats(self):
+        return self.data
 
-def search_student():
-    """Otsib õpilast nime järgi ja kuvab tema hinded."""
-    name = input("Sisesta õpilase nimi otsimiseks: ")
-    avg = calculate_average(name)
-    if avg is not None:
-        print(f"{name} keskmine hinne: {avg:.2f}")
-    else:
-        print(f"Õpilast {name} ei leitud.")
+    def get_city_stats(self, continent, country, city):
+        return self.data.get(continent, {}).get(country, {}).get(city, None)
+
+    def remove_city(self, continent, country, city):
+        if continent in self.data and country in self.data[continent]:
+            self.data[continent][country].pop(city, None)
+            # Удалить страну, если в ней больше нет городов
+            if not self.data[continent][country]:
+                del self.data[continent][country]
+            # Удалить континент, если в нём больше нет стран
+            if not self.data[continent]:
+                del self.data[continent]
+if name == "__main__":
+    manager = MurderStatsManager()
+    manager.add_data("Europe", "Estonia", "Tallinn", 5)
+    manager.add_data("Europe", "Finland", "Helsinki", 3)
+    manager.add_data("Asia", "Japan", "Tokyo", 8)
+    manager.add_data("Africa", "Nigeria", "Lagos", 6)
+    manager.add_data("Africa", "South Africa", "Cape Town", 4)
+
+    print(manager.get_stats())
+    print("Tokyo stats:", manager.get_city_stats("Asia", "Japan", "Tokyo"))
+    manager.remove_city("Europe", "Finland", "Helsinki")
+    print("After removal:", manager.get_stats())
